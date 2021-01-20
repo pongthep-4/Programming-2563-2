@@ -16,10 +16,66 @@ database = {
         'datetime': ''
     },
     'user': {
-        '6310301004': {
-            'username': '6310301004',
+        '6310301033': {
+            'username': '6310301033',
             'password': '1234',
-            'name': 'นายพงศ์เทพ นุชเวช',
+            'name': 'นายภูริส ศรีบุตรตา',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301018': {
+            'username': '6310301018',
+            'password': '1234',
+            'name': 'นายตะวัน เกียงไกรวณิช',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301019': {
+            'username': '6310301019',
+            'password': '1234',
+            'name': 'นายตะวัน เกียงไกรวณิช',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301027': {
+            'username': '6310301027',
+            'password': '1234',
+            'name': 'นายกานต์ธี โพธิดารา',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301031': {
+            'username': '6310301031',
+            'password': '1234',
+            'name': 'นายพิชา ช้างเผือก',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301025': {
+            'username': '6310301025',
+            'password': '1234',
+            'name': 'นายภวิเชษฐ ย่ำเที่ยง',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301002': {
+            'username': '6310301002',
+            'password': '1234',
+            'name': 'นายพศพงษ์ เสือเหลือง',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301003': {
+            'username': '6310301003',
+            'password': '1234',
+            'name': 'นายพงษ์สกุล บุญรับ',
+            'status': '',
+            'datetime': ''
+        },
+        '6310301026': {
+            'username': '6310301026',
+            'password': '1234',
+            'name': 'นายพัชรพงษ์ สุทธิยุทธ์',
             'status': '',
             'datetime': ''
         }
@@ -362,13 +418,15 @@ def equipment_ad(status, tx):
     def eqm_del(data_key):
         print("<<< 3 ลบข้อมูล | [0] ยกเลิก >>>")
         while True:
-            name = input("กรุณาเลือกอุปกร์เพื่อทำการลบ : ").strip()
-            if name != '' and name != '0':
-                if int(name) in list(range(1, len(list(data_key)) + 1)):
+            number = input("กรุณาเลือกอุปกร์เพื่อทำการลบ : ").strip()
+            if number != '' and number != '0':
+                if int(number) in list(range(1, len(list(data_key)) + 1)):
                     break
-            elif name == '0':
+            elif number == '0':
                 return False
-            break
+        n = list(data_key)
+        database['equipment'].pop(n[int(number) - 1])
+        return True
 
     Header()
     print("\n\t\t\t\t\t\t\t\t[1] จัดการอุปกรณ์กีฬา")
@@ -398,7 +456,7 @@ def equipment_ad(status, tx):
                 break
             elif fn == '3':
                 if eqm_del(data_key):
-                    equipment_ad(True, 'เพื่มข้อมูลสำเร็จ')
+                    equipment_ad(True, 'ล[ข้อมูลสำเร็จ')
                 else:
                     equipment_ad(False, '')
             elif fn == '0':
